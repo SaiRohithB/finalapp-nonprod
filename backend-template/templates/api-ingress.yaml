@@ -12,13 +12,13 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: {{ .Values.name-service }}
+            name: {{ .Values.name }}-service
             port:
               number: {{ .Values.port }}
       - path: /health
         pathType: Prefix
         backend:
           service:
-            name: {{ .Values.name-service }}
+            name: {{ .Values.name }}-service
             port:
               number: {{ .Values.port }}
