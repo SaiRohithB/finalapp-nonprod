@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.name-config }}
+  namespace: {{ .Values.namespace }}
+data:
+  PORT: {{ .Values.port }}
+  DATABASE_URL: {{ .Values.databaseUrl }}
+  DATABASE_HOST: {{ .Values.databaseHost }}
+  DATABASE_USERNAME: {{ .Values.databaseUsername }}
+  DATABASE_NAME: {{ .Values.databaseName }}
+  DATABASE_PORT: {{ .Values.databasePort }}
+  REDIS_REQUIRED: {{ .Values.redisRequired }}
+  CORS_ORIGIN: {{ .Values.corsOrigin }}

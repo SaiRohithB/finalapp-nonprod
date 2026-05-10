@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment
+  namespace: cloudns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: {{.values.containername}}
+        image: {{.values.image}}
+        imagePullPolicy: {{.values.imagePullPolicy}}
+        ports:
+        - containerPort: {{.values.containerPort}}

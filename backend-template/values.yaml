@@ -1,0 +1,43 @@
+name: cloudtrackerapp
+namespace: cloudns
+deployment:
+        apiNamespace: cloudns
+        replicas: 1
+        matchlabelsapp: api
+        labelsapp: api
+        name: cloud-api
+        image: cloud-api:v3
+        imagePullPolicy: Never
+        containerPort: 4000
+        configmapName: api-config
+        secretName: api-secrets
+        resourcesrequestscpu: "250m"
+        resourcesrequestsmemory: "128Mi"
+        resourceslimitscpu: "1000m"
+        resourceslimitmemory: "512Mi"
+
+service:
+        apiSpecSelectorapp: api
+        apiPortsProtocol: TCP
+        apiPortsPort: 4000
+        apiPortsTargetPort: 4000
+
+ingress:
+        apiIngressHost: webapp.local
+        apiIngressPath: /
+        apiIngressServiceName: api-service
+        apiIngressServicePort: 4000
+
+configmap:
+        apiPort: 4000
+        apiURL: "postgresql://postgres:localpass@postgres-service:5432/postgres"
+        apiHost: "postgres-service"
+        apiUsername: "postgres"
+        apiname: "postgres"
+        apiDatabasePort: "5432"
+        redisRequired: "false"
+        corsOrigin: "http://localhost:8080"
+
+secrets:
+        databasePassword: "localpass"
+        redisPassword: "dummy"

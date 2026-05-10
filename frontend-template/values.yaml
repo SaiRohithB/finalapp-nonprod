@@ -1,0 +1,4 @@
+name: web-container
+image: cloud-web:v2
+imagePullPolicy: Never
+containerPort: 5174
