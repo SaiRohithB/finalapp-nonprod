@@ -4,11 +4,11 @@ metadata:
   name: {{ .Values.name }}-configmap
   namespace: {{ .Values.namespace }}
 data:
-  PORT: {{ .Values.port }}
-  DATABASE_URL: {{ .Values.databaseUrl }}
-  DATABASE_HOST: {{ .Values.databaseHost }}
-  DATABASE_USERNAME: {{ .Values.databaseUsername }}
-  DATABASE_NAME: {{ .Values.databaseName }}
-  DATABASE_PORT: {{ .Values.databasePort }}
-  REDIS_REQUIRED: {{ .Values.redisRequired }}
-  CORS_ORIGIN: {{ .Values.corsOrigin }}
+  PORT: {{ .Values.configmap.apiPort|quote }}
+  DATABASE_URL: {{ .Values.configmap.apiURL|quote }}
+  DATABASE_HOST: {{ .Values.configmap.apiHost|quote }}
+  DATABASE_USERNAME: {{ .Values.configmap.apiUsername|quote }}
+  DATABASE_NAME: {{ .Values.configmap.apiname|quote }}
+  DATABASE_PORT: {{ .Values.configmap.apiDatabasePort|quote }}
+  REDIS_REQUIRED: {{ .Values.configmap.redisRequired|quote }}
+  CORS_ORIGIN: {{ .Values.configmap.corsOrigin|quote }}

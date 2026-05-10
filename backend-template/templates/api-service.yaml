@@ -5,9 +5,9 @@ metadata:
   namespace: {{ .Values.namespace }}
 spec:
   selector:
-    app: {{ .Values.app }}
+    app: {{ .Values.service.apiSpecSelectorapp }}
   ports:
-  - protocol: {{ .Values.protocol }}
-    port: {{ .Values.port }}
-    targetPort: {{ .Values.targetPort }}
+  - protocol: {{ .Values.service.apiPortsProtocol }}
+    port: {{ .Values.service.apiPortsPort }}
+    targetPort: {{ .Values.service.apiPortTargetPort }}
   type: ClusterIP

@@ -14,20 +14,20 @@ spec:
         app: api
     spec:
       containers:
-      - name: {{ .Values.containername }}
-        image: {{ .Values.image }}
-        imagePullPolicy: {{ .Values.imagePullPolicy }}
+      - name: {{ .Values.deployment.name }}
+        image: {{ .Values.deployment.image }}
+        imagePullPolicy: {{ .Values.deployment.imagePullPolicy }}
         ports:
-        - containerPort: {{ .Values.containerPort }}
+        - containerPort: {{ .Values.deployment.containerPort }}
         envFrom:
           - configMapRef:
-              name: {{ .Values.configmapname }}
+              name: {{ .Values.name }}-configmap
           - secretRef:
-              name: {{ .Values.secretname }}
+              name: {{ .Values.name }}-secrets
         resources:
           requests:
-            cpu: {{ .Values.resourcesrequestscpu }}
-            memory: {{ .Values.resourcesrequestsmemory }}
+            cpu: {{ .Values.deployment.resourcesrequestscpu }}
+            memory: {{ .Values.deployment.resourcesrequestsmemory }}
           limits:
-            cpu: {{ .Values.resourceslimitscpu }}
-            memory: {{ .Values.resourceslimitsmemory }}
+            cpu: {{ .Values.deployment.resourceslimitscpu }}
+            memory: {{ .Values.deployment.resourceslimitmemory }}

@@ -9,8 +9,6 @@ deployment:
         image: cloud-api:v3
         imagePullPolicy: Never
         containerPort: 4000
-        configmapName: api-config
-        secretName: api-secrets
         resourcesrequestscpu: "250m"
         resourcesrequestsmemory: "128Mi"
         resourceslimitscpu: "1000m"
@@ -20,7 +18,7 @@ service:
         apiSpecSelectorapp: api
         apiPortsProtocol: TCP
         apiPortsPort: 4000
-        apiPortsTargetPort: 4000
+        apiPortTargetPort: 4000
 
 ingress:
         apiIngressHost: webapp.local
