@@ -4,18 +4,18 @@ metadata:
   name: web-deployment
   namespace: cloudns
 spec:
-  replicas: {{.values.deployment.replicas}}
+  replicas: {{.Values.deployment.replicas}}
   selector:
     matchLabels:
-      app: {{.values.selectormatchlabelsapp}}
+      app: {{.Values.deployment.selectormatchlabelsapp}}
   template:
     metadata:
       labels:
-        app: {{.values.templatelabelsapp}}
+        app: {{.Values.deployment.templatelabelsapp}}
     spec:
       containers:
-      - name: {{.values.containername}}
-        image: {{.values.containerimage}}
-        imagePullPolicy: {{.values.imagePullPolicy}}
+      - name: {{.Values.deployment.containername}}
+        image: {{.Values.deployment.containerimage}}
+        imagePullPolicy: {{.Values.deployment.imagePullPolicy}}
         ports:
-        - containerPort: {{.values.containerPort}}
+        - containerPort: {{.Values.deployment.containerPort}}
