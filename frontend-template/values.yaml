@@ -1,4 +1,23 @@
-name: web-container
-image: cloud-web:v2
-imagePullPolicy: Never
-containerPort: 5174
+name: cloudtrackerapp
+namespace: cloudns
+deployment:
+        replicas: 1
+        selectormatchlabelsapp: web
+        templatelabelsapp: web
+        containername: web-container
+        containerimage: cloud-web:v2
+        imagePullPolicy: Never
+        containerPort: 5174
+
+service:
+        specSelectorapp: web
+        portsProtocol: TCP
+        portsPort: 5174
+        portTargetPort: 5174
+
+ingress:
+        ingressHost: webapp.local
+        ingressPath: /
+        ingressPathType: Prefix
+        ingressServiceName: web-service
+        ingressServicePort: 5174

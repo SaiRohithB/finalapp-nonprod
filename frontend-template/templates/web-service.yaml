@@ -5,9 +5,9 @@ metadata:
   namespace: cloudns
 spec:
   selector:
-    app: web
+    app: {{ .Values.service.specSelectorapp}}
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 5173
+  - protocol: {{ .Values.service.portsProtocol}}
+    port: {{ .Values.service.portsPort}}
+    targetPort: {{ .Values.service.portTargetPort}}
   type: ClusterIP

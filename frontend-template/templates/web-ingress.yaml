@@ -5,13 +5,13 @@ metadata:
   namespace: cloudns
 spec:
   rules:
-  - host: webapp.local
+  - host: {{ .Values.ingress.ingressHost }}
     http:
       paths:
-      - path: /
-        pathType: Prefix
+      - path: {{ .Values.ingress.ingressPath }}
+        pathType: {{ .Values.ingress.ingressPathType | default "Prefix" }}
         backend:
           service:
-            name: web-service
+            name: {{ .Values.ingress.ingressServiceName }}
             port:
-              number: 80
+              number: {{ .Values.ingress.ingressServicePort }}
